@@ -1,9 +1,9 @@
 function AdvStorage() {
-  let storage = _initStorage();
+  let storage = _getStorage();
 
   function set(key, value) {
     localStorage.setItem(key, value);
-    this.storage.push({ key, value });
+    return _getStorage();
   }
 
   function get(key) {
@@ -11,15 +11,14 @@ function AdvStorage() {
   }
 
   function getAll() {
-    return _initStorage();
+    return _getStorage();
   }
 
   function remove(key) {
     localStorage.removeItem(key);
-    return (this.storage = this.storage.filter((item) => item.key !== key));
   }
 
-  function _initStorage() {
+  function _getStorage() {
     return Object.keys(localStorage).map((key) => {
       const value = localStorage.getItem(key);
       return { key, value };
