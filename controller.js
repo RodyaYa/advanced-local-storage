@@ -25,9 +25,9 @@ const formController = {
     valInp.value = "";
   },
   async addBtnListener() {
-    const promise = await advs.set(this.getKey(), this.getValue());
+    const response = await advs.set(this.getKey(), this.getValue());
     this.clear();
-    this.renderList(promise);
+    this.renderList(response);
   },
   _initEvent() {
     const { key, value, add } = this.elements;
